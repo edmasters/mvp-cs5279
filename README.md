@@ -6,10 +6,9 @@ The purpose of this project is to create an online calculator that will allow pe
 The website is optimized for mobile web since the majority of users access websites using their mobile phones. 
 
 
-## Prototype Video
+## Weekly Progress demo Video
 
-https://user-images.githubusercontent.com/76230161/121072071-989dfa80-c785-11eb-9f67-ac0ae2f8d43a.mov
-
+https://user-images.githubusercontent.com/76230161/121748998-c6a17880-cabe-11eb-85c5-b64583588a19.mov
 
 
 ### Areas of Extension
@@ -21,3 +20,5 @@ Features that are not mocked-up but will hopefully be included once production i
 3. Cost of living
 4. Commute time
 5. Liquidity (Equity vs cash)
+
+
