@@ -1,6 +1,11 @@
 import React from 'react';
+import {MoreOptionsBase} from './MoreOptionsBase';
+import {MoreOptionsBonus} from './MoreOptionsBonus';
+import {MoreOptionsEquity} from './MoreOptionsEquity';
+import {MoreOptionsPerks} from './MoreOptionsPerks';
 
 export const CalculatorControls = props => {
+
 	return(
 		<div className="grid__container">			
 			<div className="grid__item">
@@ -16,7 +21,8 @@ export const CalculatorControls = props => {
 					onChange={(event) => 
 						props.setbaseSalary(event.target.value)
 					} />
-				<label className="grid__item--label" htmlFor="baseSalary">Base Salary</label>
+				<label className="grid__item--label" htmlFor="baseSalary">Base Salary {"\n"} </label>
+					<MoreOptionsBase/>
 			</div>
 			<div className="grid__item">
 				<span className="grid__item--header">${parseInt(props.bonusAmount)}</span>
@@ -32,6 +38,7 @@ export const CalculatorControls = props => {
 						props.setbonusAmount(event.target.value)
          			} />
 				<label className="grid__item--label" htmlFor="points">Bonus</label>
+				<MoreOptionsBonus/>
 			</div>
 			<div className="grid__item">
 				<span className="grid__item--header">${parseInt(props.equityValue)} </span>
@@ -47,6 +54,7 @@ export const CalculatorControls = props => {
 						props.setequityValue(event.target.value)
 					} />
 				<label className="grid__item--label" htmlFor="equityValue">Annual Equity Value</label>
+				<MoreOptionsEquity/>
 			</div>
 			<div className="grid__item">
 				<span className="grid__item--header">${props.perksValue}</span>
@@ -62,6 +70,7 @@ export const CalculatorControls = props => {
 						props.setperksValue(event.target.value)
 					} />
 				<label className="grid__item--label" htmlFor="perksValue">Perks Value</label>
+				<MoreOptionsPerks/>
 			</div>
 		</div>
 	);
