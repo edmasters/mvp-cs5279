@@ -3,10 +3,21 @@ import React, {useState} from 'react';
 export const MoreOptionsBonus = () => {
 
 	const [readMore,setReadMore]=useState(false);
-	const extraContent=<h3>
-    	<p>
-        more options will be coming here soon!</p>
-  	</h3>
+	const extraContent=<fieldset class="form-part">
+      <label> 
+        Total Sales: 
+        <br />
+        <br />
+        <input name="total sales" />
+        <br />
+      </label>
+      <label> Commision %: 
+        <br />
+        <br />
+        <input name="commisionpercent" />
+      </label>
+      <button type="submit"> Submit </button>
+    </fieldset>
 	const linkName=readMore?'Less':'More Options'
 
 	return (

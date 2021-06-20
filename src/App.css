@@ -54,4 +54,9 @@ h3 {
   font-weight: normal;
 }
 
+.form-part label {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
 

@@ -1,12 +1,38 @@
 import React, {useState} from 'react';
+import Checkboxperks from './CheckBoxPerks'
 
 export const MoreOptionsPerks = () => {
 
 	const [readMore,setReadMore]=useState(false);
-	const extraContent=<h3>
-    	<p>
-        more perk options!</p>
-  	</h3>
+	const extraContent=<fieldset class="form-part">
+      <label> 
+        Vacation Days: 
+        <br />
+        <br />
+        <input name="vacationdays" />
+        <br />
+      </label>
+      <label> Sick Days: 
+        <br />
+        <br />
+        <input name="sickdays" />
+      </label>
+      <label> Monthly Health Care Cost: 
+        <br />
+        <br />
+        <input name="healthcarecost" />
+      </label>
+      <label> Miscellaneous: 
+        <br />
+        <br />
+        <input name="misc" />
+      </label>
+      <label> Other Perks:
+        < br />
+        <Checkboxperks />
+      </label>
+      <button type="submit"> Submit </button>
+    </fieldset>
 	const linkName=readMore?'Less':'More Options'
 
 	return (
