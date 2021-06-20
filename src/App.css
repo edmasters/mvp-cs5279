@@ -60,3 +60,33 @@ h3 {
   padding-bottom: 30px;
 }
 
+.button {
+  background-color: black;
+  align-content: center;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  margin: 10px 0px;
+}
+
+.view {
+  align-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.label {
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.input {
+  font-size: 25px;
+}
+
