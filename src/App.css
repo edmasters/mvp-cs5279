@@ -80,6 +80,24 @@ h3 {
   padding: 10px;
 }
 
+.center-boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-right: 50px;
+  margin-left: 50px;
+
+}
+
+.box-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
 .label {
   text-align: center;
   font-size: 25px;

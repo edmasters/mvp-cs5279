@@ -3,58 +3,47 @@ import Checkbox from "./CheckBoxes";
 
 const OPTIONS = ["Company Avg.", "S&P Average", "No Returns"];
 
-class Checkboxes extends Component {
-  state = {
-    checkboxes: OPTIONS.reduce(
-      (options, option) => ({
-        ...options,
-        [option]: false
-      }),
-      {}
-    )
-  };
-
-  handleCheckboxChange = changeEvent => {
-    const { name } = changeEvent.target;
-
-    this.setState(prevState => ({
-      checkboxes: {
-        ...prevState.checkboxes,
-        [name]: !prevState.checkboxes[name]
-      }
+class Checkboxes extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      // checked/unchecked is stored here
+      // initially the first one is checked:
+      // [true, false, false]
+      checkboxes: new Array(3).fill().map((OPTIONS, i) => !i),
+    };
+  }
+  onChange(e, changedIndex) {
+    const { checked } = e.target;
+    
+    this.setState(state => ({
+      checkboxes: state.checkboxes.map((_, i) => i === changedIndex ? checked : false),
     }));
-  };
-
-  handleFormSubmit = formSubmitEvent => {
-    formSubmitEvent.preventDefault();
-
-    Object.keys(this.state.checkboxes)
-      .filter(checkbox => this.state.checkboxes[checkbox])
-      .forEach(checkbox => {
-        console.log(checkbox, "is selected.");
-      });
-  };
-
-  createCheckbox = option => (
-    <Checkbox
-      label={option}
-      isSelected={this.state.checkboxes[option]}
-      onCheckboxChange={this.handleCheckboxChange}
-      key={option}
-    />
-  );
-
-  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
-
+  }
   render() {
+    const { checkboxes } = this.state;
+    
     return (
       <div>
-            <form onSubmit={this.handleFormSubmit}>
-              {this.createCheckboxes()}
-            </form>
+        <div class="center-boxes">
+          {checkboxes.map((item, i) => (
+            <input
+              key={i}
+              type="checkbox"
+              checked={item}
+              onChange={e => this.onChange(e, i)}
+            />
+          ))}
+        </div>
+        <div class="box-text">
+          <label> 5% </label>
+          <label> 0% </label>
+          <label> 7% </label>
+        </div>
       </div>
     );
   }
 }
+
 
 export default Checkboxes;
