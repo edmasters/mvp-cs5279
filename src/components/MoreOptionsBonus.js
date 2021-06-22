@@ -1,29 +1,57 @@
 import React, {useState} from 'react';
+import '../App.css';
 
-export const MoreOptionsBonus = () => {
+export default class MoreOptionsBase extends React.Component {
+    constructor() {
+        super();
 
-	const [readMore,setReadMore]=useState(false);
-	const extraContent=<fieldset class="form-part">
-      <label> 
-        Total Sales: 
-        <br />
-        <br />
-        <input name="total sales" />
-        <br />
-      </label>
-      <label> Commision %: 
-        <br />
-        <br />
-        <input name="commisionpercent" />
-      </label>
-      <button type="submit"> Submit </button>
-    </fieldset>
-	const linkName=readMore?'Less':'More Options'
+        this.state = {
+            Sales: 0,
+            Commision: 0,
+            Annual: 100000,
+            open: false
+        };
+    }
 
-	return (
-    	<div className="expand_item--clickable">
-      		<a className="More_Options_Link" onClick={()=>{setReadMore(!readMore)}}><h2>{linkName}</h2></a>
-      		{readMore && extraContent}
-    	</div>
-  	);
+    handleHoursInput = e => {
+        this.setState({ Hours: e.target.value });
+    };
+    handleRateInput = e => {
+        this.setState({ Rate: e.target.value });
+    };
+
+    toggle() {
+        this.setState({
+            open: !this.state.open
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <h2>
+                    <a onClick={this.toggle.bind(this)}>
+                        More Options
+                    </a>
+                </h2>
+                <div className={"collapse" + (this.state.open ? ' in' : '')}>
+                    <fieldset className="form-part">
+                        <label>
+                            Total Sales:
+                            <br/>
+                            <br/>
+                            <input name="hourlyrate" onChange={this.handleRateInput} value={this.state.Sales}/>
+                            <br/>
+                        </label>
+                        <label> Commision %:
+                            <br/>
+                            <br/>
+                            <input name="hoursperweek" onChange={this.handleHoursInput} value={this.state.Commision}/>
+                        </label>
+                        <button type="submit"> Submit</button>
+                    </fieldset>
+                </div>
+            </div>
+        );
+    }
 }

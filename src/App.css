@@ -48,12 +48,6 @@ h2 {
   text-decoration-line: underline;
 }
 
-h3 {
-  text-align: center;
-  font-size: .9em;
-  font-weight: normal;
-}
-
 .form-part label {
   display: block;
   padding-top: 10px;
@@ -106,5 +100,13 @@ h3 {
 
 .input {
   font-size: 25px;
+}
+
+.collapse {
+  display: none
+}
+
+.collapse.in {
+  display: block
 }
 
