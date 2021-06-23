@@ -25,7 +25,14 @@ import '../App.css';
          this.setState({
              open: !this.state.open
          });
-     }
+     };
+
+     annualOnSubmit = () => {
+         this.setState({
+            Annual: (this.state.Hours * this.state.Rate * 50)
+             });
+         console.log(this.state.Annual);
+     };
 
 	render() {
 	    return (
@@ -49,7 +56,7 @@ import '../App.css';
                             <br/>
                             <input name="hoursperweek" onChange={this.handleHoursInput} value={this.state.Hours}/>
                         </label>
-                        <button type="submit"> Submit</button>
+                        <button type="submit" onClick={this.annualOnSubmit}> Submit</button>
                     </fieldset>
                 </div>
             </div>
