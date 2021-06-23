@@ -8,16 +8,16 @@ export default class MoreOptionsBase extends React.Component {
         this.state = {
             Sales: 0,
             Commision: 0,
-            Annual: 100000,
+            Annualcom: 10000,
             open: false
         };
     }
 
-    handleHoursInput = e => {
-        this.setState({ Hours: e.target.value });
+    handleSalesInput = e => {
+        this.setState({ Sales: e.target.value });
     };
-    handleRateInput = e => {
-        this.setState({ Rate: e.target.value });
+    handleCommisionInput = e => {
+        this.setState({ Commision: e.target.value });
     };
 
     toggle() {
@@ -25,6 +25,13 @@ export default class MoreOptionsBase extends React.Component {
             open: !this.state.open
         });
     }
+
+    annualOnSubmit = () => {
+        this.setState({
+            Annualcom: (this.state.Sales * this.state.Commision / 100)
+        });
+        console.log(this.state.Annualcom);
+    };
 
     render() {
         return (
@@ -40,15 +47,15 @@ export default class MoreOptionsBase extends React.Component {
                             Total Sales:
                             <br/>
                             <br/>
-                            <input name="hourlyrate" onChange={this.handleRateInput} value={this.state.Sales}/>
+                            <input name="hourlyrate" onChange={this.handleSalesInput} value={this.state.Sales}/>
                             <br/>
                         </label>
                         <label> Commision %:
                             <br/>
                             <br/>
-                            <input name="hoursperweek" onChange={this.handleHoursInput} value={this.state.Commision}/>
+                            <input name="hoursperweek" onChange={this.handleCommisionInput} value={this.state.Commision}/>
                         </label>
-                        <button type="submit"> Submit</button>
+                        <button type="submit" onClick={this.annualOnSubmit}> Submit</button>
                     </fieldset>
                 </div>
             </div>

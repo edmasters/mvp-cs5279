@@ -11,7 +11,7 @@ export default class MoreOptionsPerks extends React.Component {
             Sick: 0,
             Health: 0,
             Misc: 0,
-            Annual: 100000,
+            AnnualPerks: 60000,
             open: false
         };
     }
@@ -36,6 +36,13 @@ export default class MoreOptionsPerks extends React.Component {
         });
     }
 
+    annualOnSubmit = () => {
+        this.setState({
+            AnnualPerks: (parseInt(this.state.Sick) * 50 + parseInt(this.state.Vacation) * 100 + parseInt(this.state.Misc) + (456 - parseInt(this.state.Health))*12)
+        });
+        console.log(this.state.AnnualPerks);
+    };
+
     render() {
         return (
             <div>
@@ -50,7 +57,7 @@ export default class MoreOptionsPerks extends React.Component {
                             Vacation Days:
                             <br/>
                             <br/>
-                            <input name="equity" onChange={this.handleVacationInput} value={this.state.Vacation}/>
+                            <input name="vacation" onChange={this.handleVacationInput} value={this.state.Vacation}/>
                             <br/>
                         </label>
                         <label>
@@ -65,10 +72,15 @@ export default class MoreOptionsPerks extends React.Component {
                             <br/>
                             <input name="ticker" onChange={this.handleMiscInput} value={this.state.Misc}/>
                         </label>
+                        <label> Monthly Health Care Cost:
+                            <br/>
+                            <br/>
+                            <input name="ticker" onChange={this.handleHealthInput} value={this.state.Health}/>
+                        </label>
                         <label> Other Perks:
                             <Checkboxes />
                         </label>
-                        <button type="submit"> Submit</button>
+                        <button type="submit" onClick={this.annualOnSubmit}> Submit</button>
                     </fieldset>
                 </div>
             </div>
