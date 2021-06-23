@@ -9,7 +9,7 @@ import '../App.css';
              readMore: false,
              Hours: 0,
              Rate: 0,
-             Annual: 100000,
+             Annualbase: 100000,
              open: false
          };
      }
@@ -29,9 +29,9 @@ import '../App.css';
 
      annualOnSubmit = () => {
          this.setState({
-            Annual: (this.state.Hours * this.state.Rate * 50)
+            Annualbase: (this.state.Hours * this.state.Rate * 50)
              });
-         console.log(this.state.Annual);
+         console.log(this.state.Annualbase);
      };
 
 	render() {
