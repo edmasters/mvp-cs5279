@@ -38,7 +38,7 @@ export default class MoreOptionsPerks extends React.Component {
 
     annualOnSubmit = () => {
         this.setState({
-            AnnualPerks: (parseInt(this.state.Sick) * 50 + parseInt(this.state.Vacation) * 100 + parseInt(this.state.Misc) + (456 - parseInt(this.state.Health))*12)
+            AnnualPerks: (parseInt(this.state.Sick) * 50 + parseInt(this.state.Vacation) * 1000000/250 + parseInt(this.state.Misc) + (456 - parseInt(this.state.Health))*12)
         });
         console.log(this.state.AnnualPerks);
     };

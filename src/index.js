@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+window.baseSalary = 100000;
+window.bonusAmount = 10000;
+window.perksValue = 60000;
+window.equityValue = 12000;
+window.totalValue = 182000;
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

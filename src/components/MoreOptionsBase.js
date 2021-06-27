@@ -9,7 +9,7 @@ import '../App.css';
              readMore: false,
              Hours: 0,
              Rate: 0,
-             Annualbase: 100000,
+             Annualbase: window.baseSalary,
              open: false
          };
      }
@@ -31,7 +31,8 @@ import '../App.css';
          this.setState({
             Annualbase: (this.state.Hours * this.state.Rate * 50)
              });
-         console.log(this.state.Annualbase);
+            window.baseSalary = this.state.Annualbase;
+            console.log(window.baseSalary);
      };
 
 	render() {
@@ -63,3 +64,4 @@ import '../App.css';
         );
     }
 }
+
