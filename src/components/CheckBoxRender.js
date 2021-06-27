@@ -8,9 +8,6 @@ class Checkboxes extends React.Component {
   constructor() {
     super();
     this.state = {
-      // checked/unchecked is stored here
-      // initially the first one is checked:
-      // [true, false, false]
       checkboxes: new Array(3).fill().map((OPTIONS, RETURNS) => !RETURNS),
     };
   }
@@ -27,7 +24,7 @@ class Checkboxes extends React.Component {
     
     return (
       <div>
-        <div class="center-boxes">
+        <div className="center-boxes">
           {checkboxes.map((item, i) => (
             <input
               key={i}
@@ -37,7 +34,7 @@ class Checkboxes extends React.Component {
             />
           ))}
         </div>
-        <div class="box-text">
+        <div className="box-text">
           <label> 5% </label>
           <label> 0% </label>
           <label> 7% </label>

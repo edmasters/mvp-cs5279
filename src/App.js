@@ -13,12 +13,12 @@ function App() {
 					<h1>Compensation Calculator</h1>
 			</header>
 			<CalculatorControls/>
-			<div class="center">
-				<label class="label"> Job Title: </label>
-				<input class="input" name="jobtitle" />
+			<div className="center">
+				<label className="label"> Job Title: </label>
+				<input className="input" name="jobtitle" />
 			</div>
-			<div class="center">
-				<button onClick={"filler function"} class="button"> Submit to see Comparison
+			<div className="center">
+				<button className="button"> Submit to see Comparison
 				</button>
 			</div>
 		</div>
