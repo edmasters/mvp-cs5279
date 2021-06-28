@@ -26,8 +26,8 @@ export default class CalculatorControls extends React.Component {
 		this.setState({baseSalary: val})
 	}
 
-	updateBonus = event => {
-		this.setState({bonusAmount: event.target.value})
+	updateBonus = val => {
+		this.setState({bonusAmount: val})
 	}
 
 	updateEquity = event => {
@@ -42,6 +42,10 @@ export default class CalculatorControls extends React.Component {
 		this.setState({totalValue: parseInt(val) + parseInt(this.state.equityValue) + parseInt(this.state.perksValue) + parseInt(this.state.bonusAmount)})
 	}
 
+	updateTotalBonus = val => {
+		this.setState({totalValue: parseInt(val) + parseInt(this.state.equityValue) + parseInt(this.state.perksValue) + parseInt(this.state.baseSalary)})
+	}
+
 	baseUpdates = event => {
 		const val = event.target.value;
 		this.updateBase(val);
@@ -49,8 +53,9 @@ export default class CalculatorControls extends React.Component {
 	}
 
 	bonusUpdates = event => {
-		this.updateBonus(event);
-		this.updateTotal(event);
+		const val = event.target.value;
+		this.updateBonus(val);
+		this.updateTotalBonus(val);
 	}
 
 	equityUpdates = event => {
@@ -96,14 +101,12 @@ export default class CalculatorControls extends React.Component {
 	};
 
 	annualBonusOnSubmit = () => {
-		this.setState({
-			bonusAmount: (this.state.Sales * this.state.Commision / 100)
-		});
-		this.updateTotal();
+		const val = this.state.Sales * this.state.Commision / 100;
+		this.setState({bonusAmount: val});
+		this.updateTotalBonus(val);
 	};
 
-
-
+	
 	render() {
 		return (
 			<div>
