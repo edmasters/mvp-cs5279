@@ -1,6 +1,7 @@
 import React from 'react';
 import MoreOptionsEquity from './MoreOptionsEquity';
 import MoreOptionsPerks from './MoreOptionsPerks';
+import Checkboxes from "./CheckBoxRender";
 
 export default class CalculatorControls extends React.Component {
 	constructor() {
@@ -18,7 +19,11 @@ export default class CalculatorControls extends React.Component {
 			open: false,
 			Sales: 0,
 			Commision: 0,
-			openBonus: false
+			openBonus: false,
+			Equity: 0,
+			Years: 0,
+			stockPrice: 0,
+			openEquity: false
 		};
 	}
 
@@ -30,8 +35,8 @@ export default class CalculatorControls extends React.Component {
 		this.setState({bonusAmount: val})
 	}
 
-	updateEquity = event => {
-		this.setState({equityValue: event.target.value})
+	updateEquity = val => {
+		this.setState({equityValue: val})
 	}
 
 	updatePerks = event => {
@@ -44,6 +49,10 @@ export default class CalculatorControls extends React.Component {
 
 	updateTotalBonus = val => {
 		this.setState({totalValue: parseInt(val) + parseInt(this.state.equityValue) + parseInt(this.state.perksValue) + parseInt(this.state.baseSalary)})
+	}
+
+	updateTotalEquity = val => {
+		this.setState({totalValue: parseInt(val) + parseInt(this.state.bonusAmount) + parseInt(this.state.perksValue) + parseInt(this.state.baseSalary)})
 	}
 
 	baseUpdates = event => {
@@ -59,8 +68,9 @@ export default class CalculatorControls extends React.Component {
 	}
 
 	equityUpdates = event => {
-		this.updateEquity(event);
-		this.updateTotal(event);
+		const val = event.target.value;
+		this.updateEquity(val);
+		this.updateTotalEquity(val);
 	}
 
 	perksUpdates = event => {
@@ -82,6 +92,18 @@ export default class CalculatorControls extends React.Component {
 		this.setState({ Commision: e.target.value });
 	};
 
+	handleTickerInput = e => {
+		this.setState({ stockPrice: e.target.value });
+	};
+
+	handleYearsInput = e => {
+		this.setState({ Years: e.target.value });
+	};
+
+	handleEquityInput = e => {
+		this.setState({ Equity: e.target.value });
+	};
+
 	toggle() {
 		this.setState({
 			open: !this.state.open
@@ -92,7 +114,13 @@ export default class CalculatorControls extends React.Component {
 		this.setState({
 			openBonus: !this.state.openBonus
 		});
-	}
+	};
+
+	toggleEquity() {
+		this.setState({
+			openEquity: !this.state.openEquity
+		});
+	};
 
 	annualOnSubmit = () => {
 		const val = this.state.Hours * this.state.Rate * 50;
@@ -106,7 +134,25 @@ export default class CalculatorControls extends React.Component {
 		this.updateTotalBonus(val);
 	};
 
-	
+	annualEquityOnSubmit = () => {
+		let val = 0;
+		if (window.position  == 0) {
+			val = this.state.stockPrice * ((1.05 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;;
+			this.setState({equityValue: val});
+			this.updateTotalEquity(val);
+		}
+		else if (window.position == 1) {
+			val = this.state.stockPrice * ((1.07 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;
+			this.setState({equityValue: val});
+			this.updateTotalEquity(val);
+		}
+		else {
+			val = (this.state.Equity / this.state.Years * this.state.stockPrice);
+			this.setState({equityValue: val});
+			this.updateTotalEquity(val);
+		}
+	};
+
 	render() {
 		return (
 			<div>
@@ -209,8 +255,41 @@ export default class CalculatorControls extends React.Component {
 						onChange={(event) =>
 							this.equityUpdates(event)}/>
 					<label className="grid__item--label" htmlFor="equityValue">Annual Equity Value</label>
-					<MoreOptionsEquity/>
+					<div>
+						<h2>
+							<a onClick={this.toggleEquity.bind(this)}>
+								More Options
+							</a>
+						</h2>
+						<div className={"collapse" + (this.state.openEquity ? ' in' : '')}>
+							<fieldset className="form-part">
+								<label>
+									Total Number of Shares:
+									<br/>
+									<br/>
+									<input name="equity" onChange={this.handleEquityInput} value={this.state.Equity}/>
+									<br/>
+								</label>
+								<label>
+									Years of Vesting:
+									<br/>
+									<br/>
+									<input name="years" onChange={this.handleYearsInput} value={this.state.Years}/>
+									<br/>
+								</label>
+								<label> Stock Price:
+									<br/>
+									<br/>
+									<input name="ticker" onChange={this.handleTickerInput} value={this.state.stockPrice}/>
+								</label>
+								<label> Return Assumption:</label>
+								< Checkboxes />
+								<button type="submit" onClick={this.annualEquityOnSubmit}> Submit</button>
+							</fieldset>
+						</div>
+					</div>
 				</div>
+
 				<div className="grid__item">
 					<span className="grid__item--header">${this.state.perksValue}</span>
 					<input

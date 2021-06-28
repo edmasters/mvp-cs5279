@@ -9,6 +9,7 @@ window.bonusAmount = 10000;
 window.perksValue = 60000;
 window.equityValue = 12000;
 window.totalValue = 182000;
+window.position = 0;
 
 ReactDOM.render(
   <React.StrictMode>

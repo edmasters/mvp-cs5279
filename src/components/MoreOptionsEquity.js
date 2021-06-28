@@ -43,11 +43,11 @@ export default class MoreOptionsBase extends React.Component {
         return (
             <div>
                 <h2>
-                    <a onClick={this.toggle.bind(this)}>
+                    <a onClick={this.toggleEquity.bind(this)}>
                         More Options
                     </a>
                 </h2>
-                <div className={"collapse" + (this.state.open ? ' in' : '')}>
+                <div className={"collapse" + (this.state.openEquity ? ' in' : '')}>
                     <fieldset className="form-part">
                         <label>
                             Total Number of Shares:
@@ -70,7 +70,7 @@ export default class MoreOptionsBase extends React.Component {
                         </label>
                         <label> Return Assumption:</label>
                         < Checkboxes />
-                        <button type="submit" onClick={this.annualOnSubmit}> Submit</button>
+                        <button type="submit" onClick={this.annualEquityOnSubmit}> Submit</button>
                     </fieldset>
                 </div>
             </div>

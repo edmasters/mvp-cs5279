@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 import Checkbox from "./CheckBoxes";
 
-const OPTIONS = ["Company Avg.", "S&P Average", "No Returns"];
-const RETURNS = [5, 0, 7];
+const OPTIONS = [1,2,3];
+const RETURNS = [0, 5, 7];
 
 class Checkboxes extends React.Component {
   constructor() {
     super();
     this.state = {
       checkboxes: new Array(3).fill().map((OPTIONS, RETURNS) => !RETURNS),
+      return: 5
     };
   }
   onChange(e, changedIndex) {
     const { checked } = e.target;
-    
+    const position = changedIndex;
+    window.position = position;
+
     this.setState(state => ({
       checkboxes: state.checkboxes.map((_, i) => i === changedIndex ? checked : false),
     }));
-    console.log(this.state.checkboxes)
   }
   render() {
     const { checkboxes } = this.state;
@@ -36,8 +38,8 @@ class Checkboxes extends React.Component {
         </div>
         <div className="box-text">
           <label> 5% </label>
-          <label> 0% </label>
           <label> 7% </label>
+          <label> 0% </label>
         </div>
       </div>
     );
