@@ -1,5 +1,4 @@
 import React from 'react';
-import MoreOptionsEquity from './MoreOptionsEquity';
 import MoreOptionsPerks from './MoreOptionsPerks';
 import Checkboxes from "./CheckBoxRender";
 
@@ -8,11 +7,11 @@ export default class CalculatorControls extends React.Component {
 		super();
 
 		this.state = {
-			baseSalary: window.baseSalary,
-			bonusAmount: window.bonusAmount,
-			equityValue: window.equityValue,
-			perksValue: window.perksValue,
-			totalValue: window.totalValue,
+			baseSalary: 100000,
+			bonusAmount: 10000,
+			equityValue: 12000,
+			perksValue: 60000,
+			totalValue: 182000,
 			readMore: false,
 			Hours: 0,
 			Rate: 0,
