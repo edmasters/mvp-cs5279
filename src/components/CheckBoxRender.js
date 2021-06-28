@@ -14,8 +14,7 @@ class Checkboxes extends React.Component {
   }
   onChange(e, changedIndex) {
     const { checked } = e.target;
-    const position = changedIndex;
-    window.position = position;
+    console.log({checked});
 
     this.setState(state => ({
       checkboxes: state.checkboxes.map((_, i) => i === changedIndex ? checked : false),

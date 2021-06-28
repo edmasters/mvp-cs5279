@@ -1,6 +1,7 @@
 import React from 'react';
 import MoreOptionsPerks from './MoreOptionsPerks';
 import Checkboxes from "./CheckBoxRender";
+import Checkboxperks from "./CheckBoxPerks";
 
 export default class CalculatorControls extends React.Component {
 	constructor() {
@@ -22,7 +23,12 @@ export default class CalculatorControls extends React.Component {
 			Equity: 0,
 			Years: 0,
 			stockPrice: 0,
-			openEquity: false
+			openEquity: false,
+			Vacation: 0,
+			Sick: 0,
+			Health: 0,
+			Misc: 0,
+			openPerks: false
 		};
 	}
 
@@ -38,8 +44,8 @@ export default class CalculatorControls extends React.Component {
 		this.setState({equityValue: val})
 	}
 
-	updatePerks = event => {
-		this.setState({perksValue: event.target.value})
+	updatePerks = val => {
+		this.setState({perksValue: val})
 	}
 
 	updateTotal = val => {
@@ -52,6 +58,10 @@ export default class CalculatorControls extends React.Component {
 
 	updateTotalEquity = val => {
 		this.setState({totalValue: parseInt(val) + parseInt(this.state.bonusAmount) + parseInt(this.state.perksValue) + parseInt(this.state.baseSalary)})
+	}
+
+	updateTotalPerks = val => {
+		this.setState({totalValue: parseInt(val) + parseInt(this.state.bonusAmount) + parseInt(this.state.equityValue) + parseInt(this.state.baseSalary)})
 	}
 
 	baseUpdates = event => {
@@ -73,8 +83,9 @@ export default class CalculatorControls extends React.Component {
 	}
 
 	perksUpdates = event => {
-		this.updatePerks(event);
-		this.updateTotal(event);
+		const val = event.target.value;
+		this.updatePerks(val);
+		this.updateTotalPerks(val);
 	}
 
 	handleHoursInput = e => {
@@ -103,6 +114,20 @@ export default class CalculatorControls extends React.Component {
 		this.setState({ Equity: e.target.value });
 	};
 
+	handleVacationInput = e => {
+		this.setState({ Vacation: e.target.value });
+	};
+	handleSickInput = e => {
+		this.setState({ Sick: e.target.value });
+	};
+	handleHealthInput = e => {
+		this.setState({ Health: e.target.value });
+	};
+
+	handleMiscInput = e => {
+		this.setState({ Misc: e.target.value });
+	};
+
 	toggle() {
 		this.setState({
 			open: !this.state.open
@@ -120,6 +145,12 @@ export default class CalculatorControls extends React.Component {
 			openEquity: !this.state.openEquity
 		});
 	};
+
+	togglePerks() {
+		this.setState({
+			openPerks: !this.state.openPerks
+		});
+	}
 
 	annualOnSubmit = () => {
 		const val = this.state.Hours * this.state.Rate * 50;
@@ -150,6 +181,12 @@ export default class CalculatorControls extends React.Component {
 			this.setState({equityValue: val});
 			this.updateTotalEquity(val);
 		}
+	};
+
+	annualPerksOnSubmit = () => {
+		const val = (parseInt(this.state.Sick) * 50 + parseInt(this.state.Vacation) * this.state.baseSalary /250 + parseInt(this.state.Misc) + (456 - parseInt(this.state.Health))*12);
+		this.setState({perksValue: val});
+		this.updateTotalPerks(val);
 	};
 
 	render() {
@@ -200,7 +237,6 @@ export default class CalculatorControls extends React.Component {
 						</div>
 					</div>
 				</div>
-
 
 				<div className="grid__item">
 					<span className="grid__item--header">${parseInt(this.state.bonusAmount)}</span>
@@ -302,7 +338,45 @@ export default class CalculatorControls extends React.Component {
 						onChange={(event) =>
 							this.perksUpdates(event)}/>
 					<label className="grid__item--label" htmlFor="perksValue">Perks Value</label>
-					<MoreOptionsPerks/>
+					<div>
+						<h2>
+							<a onClick={this.togglePerks.bind(this)}>
+								More Options
+							</a>
+						</h2>
+						<div className={"collapse" + (this.state.openPerks ? ' in' : '')}>
+							<fieldset className="form-part">
+								<label>
+									Vacation Days:
+									<br/>
+									<br/>
+									<input name="vacation" onChange={this.handleVacationInput} value={this.state.Vacation}/>
+									<br/>
+								</label>
+								<label>
+									Sick Days:
+									<br/>
+									<br/>
+									<input name="years" onChange={this.handleSickInput} value={this.state.Sick}/>
+									<br/>
+								</label>
+								<label> Miscellaneous:
+									<br/>
+									<br/>
+									<input name="ticker" onChange={this.handleMiscInput} value={this.state.Misc}/>
+								</label>
+								<label> Monthly Health Care Cost:
+									<br/>
+									<br/>
+									<input name="ticker" onChange={this.handleHealthInput} value={this.state.Health}/>
+								</label>
+								<label> Other Perks:
+									<Checkboxperks/>
+								</label>
+								<button type="submit" onClick={this.annualPerksOnSubmit}> Submit</button>
+							</fieldset>
+						</div>
+					</div>
 				</div>
 			</div>
 			</div>

@@ -30,13 +30,13 @@ export default class MoreOptionsPerks extends React.Component {
         this.setState({ Misc: e.target.value });
     };
 
-    toggle() {
+    togglePerks() {
         this.setState({
-            open: !this.state.open
+            openPerks: !this.state.openPerks
         });
     }
 
-    annualOnSubmit = () => {
+    annualPerksOnSubmit = () => {
         this.setState({
             AnnualPerks: (parseInt(this.state.Sick) * 50 + parseInt(this.state.Vacation) * 1000000/250 + parseInt(this.state.Misc) + (456 - parseInt(this.state.Health))*12)
         });
