@@ -9,12 +9,13 @@ class Checkboxes extends React.Component {
     super();
     this.state = {
       checkboxes: new Array(3).fill().map((OPTIONS, RETURNS) => !RETURNS),
-      return: 5
     };
   }
+
   onChange(e, changedIndex) {
     const { checked } = e.target;
-    console.log({checked});
+    const position = changedIndex;
+    window.position = position;
 
     this.setState(state => ({
       checkboxes: state.checkboxes.map((_, i) => i === changedIndex ? checked : false),

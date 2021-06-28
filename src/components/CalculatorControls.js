@@ -1,5 +1,4 @@
 import React from 'react';
-import MoreOptionsPerks from './MoreOptionsPerks';
 import Checkboxes from "./CheckBoxRender";
 import Checkboxperks from "./CheckBoxPerks";
 
@@ -167,17 +166,17 @@ export default class CalculatorControls extends React.Component {
 	annualEquityOnSubmit = () => {
 		let val = 0;
 		if (window.position  == 0) {
-			val = this.state.stockPrice * ((1.05 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;;
+			const val = this.state.stockPrice * ((1.05 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;;
 			this.setState({equityValue: val});
 			this.updateTotalEquity(val);
 		}
 		else if (window.position == 1) {
-			val = this.state.stockPrice * ((1.07 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;
+			const val = this.state.stockPrice * ((1.07 ** this.state.Years -1) / 2 + 1) * this.state.Equity / this.state.Years;
 			this.setState({equityValue: val});
 			this.updateTotalEquity(val);
 		}
 		else {
-			val = (this.state.Equity / this.state.Years * this.state.stockPrice);
+			const val = (this.state.Equity / this.state.Years * this.state.stockPrice);
 			this.setState({equityValue: val});
 			this.updateTotalEquity(val);
 		}
