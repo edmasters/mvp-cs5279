@@ -6,11 +6,9 @@ The purpose of this project is to create an online calculator that will allow pe
 The website is optimized for mobile web since the majority of users access websites using their mobile phones. 
 
 
-## Weekly Progress demo Video (6/28)
+## Weekly Progress demo Video (6/20)
 
-
-https://user-images.githubusercontent.com/76230161/123706777-9592a900-d81d-11eb-975b-a89c2e1191cc.mov
-
+https://user-images.githubusercontent.com/76230161/122691377-319c2f00-d1e4-11eb-8ab7-ba6a1354b0f7.mov
 
 
 
@@ -21,9 +19,9 @@ https://user-images.githubusercontent.com/76230161/123706777-9592a900-d81d-11eb-
 Features that are not mocked-up but will hopefully be included once production is further along.
 
 1. Pdf parsing
-2. Integrate stock api for company stock
-4. <strike>Comparison with similar roles</strike>
-5. Cost of living
-6. Commute time
+2. <strike>Comparison with similar roles</strike>
+3. Cost of living
+4. Commute time
+5. Liquidity (Equity vs cash)
 
 
