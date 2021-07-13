@@ -17,6 +17,12 @@ connection.once('open', ()=> {
     console.log('MongoDB database connection Established');
 })
 
+const jobRouter = require('./routes/jobs');
+const compRouter = require('./routes/comps');
+
+app.use('/jobs', jobRouter);
+app.use('/comps', compRouter);
+
 app.listen(port, () => {
     console.log('Server is running on port: 5000');
 });
