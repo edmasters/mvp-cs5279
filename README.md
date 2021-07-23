@@ -9,7 +9,9 @@ The website is optimized for mobile web since the majority of users access websi
 ## Final demo Video
 
 
-Uploading Screen Recording 2021-07-22 at 1.00.23 PM.mov…
+
+https://user-images.githubusercontent.com/76230161/126851029-c9d73b46-d68a-401e-81ba-81233b0a48af.mov
+
 
 
 This project was built using the MERN stack. The terminal window shows the MongoDB backend is up and running (and connected to the website) even though its functionality isn't visible at this time. The eventual goal of having the mongo backend is to save a user's job title and comp information anonomously and provide a comparison with other similar roles. 
